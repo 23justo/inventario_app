@@ -146,20 +146,20 @@ Route::middleware('auth:api')->group( function () {
 //PROVEEDOR
 Route::middleware('auth:api')->group( function () {
     
-    Route::post('proveedor', 'ProveedorController@store')->name('proveedor.store')
+    Route::post('proveedores', 'ProveedorController@store')->name('proveedor.store')
         ->middleware('can:proveedor.store');
 
-    Route::get('proveedor', 'ProveedorController@index')->name('proveedor.index')
+    Route::get('proveedores', 'ProveedorController@index')->name('proveedor.index')
         ->middleware('can:proveedor.index');
 
-    Route::get('proveedor/{proveedor}', 'ProveedorController@show')->name('proveedor.show')
+    Route::get('proveedores/{proveedor}', 'ProveedorController@show')->name('proveedor.show')
         ->middleware('can:proveedor.show');
 
     
-    Route::put('proveedor/{proveedor}', 'ProveedorController@update')->name('proveedor.update')
+    Route::put('proveedores/{proveedor}', 'ProveedorController@update')->name('proveedor.update')
         ->middleware('can:proveedor.update');
         
-    Route::delete('proveedor/{proveedor}', 'ProveedorController@destroy')->name('proveedor.destroy')
+    Route::delete('proveedores/{proveedor}', 'ProveedorController@destroy')->name('proveedor.destroy')
         ->middleware('can:proveedor.destroy');
     
 });

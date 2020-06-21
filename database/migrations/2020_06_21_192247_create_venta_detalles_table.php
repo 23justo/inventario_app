@@ -18,7 +18,7 @@ class CreateVentaDetallesTable extends Migration
             $table->integer('cantidad');
             
             $table->unsignedBigInteger('venta_id');
-            $table->foreign('venta_id')->references('id')->on('compras');
+            $table->foreign('venta_id')->references('id')->on('ventas');
 
             $table->unsignedBigInteger('producto_id');
             $table->foreign('producto_id')->references('id')->on('productos');

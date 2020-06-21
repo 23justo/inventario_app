@@ -66,7 +66,9 @@ class ProductoController extends Controller
         return response()->json(
             array(
                 "mensaje" => "Categoria no permitida"
-            )
+            ),
+            406
+
         );
 
     }
@@ -119,7 +121,8 @@ class ProductoController extends Controller
         return response()->json(
             array(
                 "mensaje" => "Accion no permitida"
-            )
+            ),
+            406
         );
     }
 

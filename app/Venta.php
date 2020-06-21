@@ -10,7 +10,7 @@ class Venta extends Model
         'fecha',
     ];
 
-    public function detalle_ventass(){
+    public function detalle_venta(){
         return $this->hasMany('App\VentaDetalle','venta_id','id')->get();
     }
 }

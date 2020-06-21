@@ -34,6 +34,7 @@ class VentaController extends Controller
     public function filter_venta(){
         $productos = $this->filter();
         $detalle_venta = VentaDetalle::whereIn('producto_id',$productos)->pluck('venta_id')->toArray();
+        error_log(json_encode($detalle_venta));
         return array_unique($detalle_venta);
     }
 
@@ -107,7 +108,7 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-        $vemtas = $this->filter_venta();
+        $ventas = $this->filter_venta();
         $indice = array_search($venta['id'], $ventas);
         if(is_numeric($indice)){
 
@@ -116,7 +117,7 @@ class VentaController extends Controller
             return response()->json($venta, 200);
         }
         else
-            return response()->json("no tienes permisos para ver esta venta", 403);
+            return response()->json("no tienes permisos para ver esta venta", 406);
     }
 
     /**
