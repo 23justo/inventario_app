@@ -9,6 +9,6 @@ $factory->define(Sucursal::class, function (Faker $faker) {
     return [
         'nombre' => $faker->sentence,
         'direccion' => $faker->sentence,
-        'supermercado_id' =>  rand(1,20)
+        'supermercado_id' =>  rand(1,3)
     ];
 });

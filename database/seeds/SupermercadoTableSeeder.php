@@ -11,6 +11,6 @@ class SupermercadoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Supermercado::class, 80)->create();
+        factory(App\Supermercado::class, 3)->create();
     }
 }

@@ -11,7 +11,7 @@ $factory->define(Producto::class, function (Faker $faker) {
         'existencias' => $faker->numberBetween(1,150),
         'precio_compra' => $faker->numberBetween(1,300),
         'precio_venta' => $faker->numberBetween(1,300),
-        'categoria_id' =>  rand(1,20),
+        'categoria_id' =>  rand(1,10),
         'proveedor_id' =>  rand(1,20)
     ];
 });

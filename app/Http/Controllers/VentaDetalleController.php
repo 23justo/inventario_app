@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Proveedor;
+use App\VentaDetalle;
 use Illuminate\Http\Request;
 
-class ProveedorController extends Controller
+class VentaDetalleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        return response()->json(Proveedor::get(), 200);
+        //
     }
 
     /**
@@ -35,28 +35,27 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        $proveedor = Proveedor::create($request->all());
-        return response()->json($proveedor, 201);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Proveedor  $proveedor
+     * @param  \App\VentaDetalle  $ventaDetalle
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedor $proveedor)
+    public function show(VentaDetalle $ventaDetalle)
     {
-        return response()->json(Proveedor::find($proveedor['id']), 200);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Proveedor  $proveedor
+     * @param  \App\VentaDetalle  $ventaDetalle
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor)
+    public function edit(VentaDetalle $ventaDetalle)
     {
         //
     }
@@ -65,24 +64,22 @@ class ProveedorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Proveedor  $proveedor
+     * @param  \App\VentaDetalle  $ventaDetalle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, VentaDetalle $ventaDetalle)
     {
-        $proveedor->update($request->all());
-        return response()->json($proveedor, 200);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Proveedor  $proveedor
+     * @param  \App\VentaDetalle  $ventaDetalle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proveedor $proveedor)
+    public function destroy(VentaDetalle $ventaDetalle)
     {
-        $proveedor->delete();
-        return response()->json(null, 204);
+        //
     }
 }

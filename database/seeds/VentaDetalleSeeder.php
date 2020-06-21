@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SucursalTableSeeder extends Seeder
+class VentaDetalleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class SucursalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Sucursal::class, 9)->create();
+        //
     }
 }

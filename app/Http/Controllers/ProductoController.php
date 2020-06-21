@@ -23,6 +23,9 @@ class ProductoController extends Controller
             $sucursales = Sucursal::where('supermercado_id',$user['supermercado_id'])->pluck('id')->toArray();
             $categorias = Categoria::whereIn('sucursal_id',$sucursales)->pluck('id')->toArray();
         }
+        else
+            $categorias = Categoria::get()->pluck('id')->toArray();
+        
         return $categorias;
     }
     /**
@@ -78,7 +81,7 @@ class ProductoController extends Controller
     {
         $categorias = $this->filter();
         if(array_search($producto['categoria_id'], $categorias)){
-            return response()->json(ProductoModel::find($producto['id']), 200);
+            return response()->json(Producto::find($producto['id']), 200);
         }
         return response()->json(
             array(
@@ -107,8 +110,17 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        $producto->update($request->all());
-        return response()->json($producto, 200);
+        $categorias = $this->filter();
+        
+        if(array_search($producto['categoria_id'], $categorias)){
+            $producto->update($request->all());
+            return response()->json($producto, 200);
+        }
+        return response()->json(
+            array(
+                "mensaje" => "Accion no permitida"
+            )
+        );
     }
 
     /**
@@ -119,7 +131,17 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        $producto->delete();
-        return response()->json(null, 204);
+        $categorias = $this->filter();
+
+        if(array_search($producto['categoria_id'], $categorias)){
+            $producto->delete();
+            return response()->json(null, 204);
+        }
+        return response()->json(
+            array(
+                "mensaje" => "Accion no permitida"
+            )
+        );
+        
     }
 }

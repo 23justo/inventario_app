@@ -98,6 +98,68 @@ Route::middleware('auth:api')->group( function () {
         ->middleware('can:producto.update');
         
     Route::delete('productos/{producto}', 'ProductoController@destroy')->name('producto.destroy')
-        ->middleware('can:producto.destroy');
+        ->middleware('can:producto.destroy');    
+});
+
+//COMPRA
+Route::middleware('auth:api')->group( function () {
+    
+    Route::post('compras', 'CompraController@store')->name('compra.store')
+        ->middleware('can:compra.store');
+
+    Route::get('compras', 'CompraController@index')->name('compra.index')
+        ->middleware('can:compra.index');
+
+    Route::get('compras/{compra}', 'CompraController@show')->name('compra.show')
+        ->middleware('can:compra.show');
+
+    
+    Route::put('compras/{compra}', 'CompraController@update')->name('compra.update')
+        ->middleware('can:compra.update');
+        
+    Route::delete('compras/{compra}', 'CompraController@destroy')->name('compra.destroy')
+        ->middleware('can:compra.destroy');
+    
+});
+
+//VENTA
+Route::middleware('auth:api')->group( function () {
+    
+    Route::post('ventas', 'VentaController@store')->name('venta.store')
+        ->middleware('can:venta.store');
+
+    Route::get('ventas', 'VentaController@index')->name('venta.index')
+        ->middleware('can:venta.index');
+
+    Route::get('ventas/{venta}', 'VentaController@show')->name('venta.show')
+        ->middleware('can:venta.show');
+
+    
+    Route::put('ventas/{venta}', 'VentaController@update')->name('venta.update')
+        ->middleware('can:venta.update');
+        
+    Route::delete('ventas/{venta}', 'VentaController@destroy')->name('venta.destroy')
+        ->middleware('can:venta.destroy');
+    
+});
+
+//PROVEEDOR
+Route::middleware('auth:api')->group( function () {
+    
+    Route::post('proveedor', 'ProveedorController@store')->name('proveedor.store')
+        ->middleware('can:proveedor.store');
+
+    Route::get('proveedor', 'ProveedorController@index')->name('proveedor.index')
+        ->middleware('can:proveedor.index');
+
+    Route::get('proveedor/{proveedor}', 'ProveedorController@show')->name('proveedor.show')
+        ->middleware('can:proveedor.show');
+
+    
+    Route::put('proveedor/{proveedor}', 'ProveedorController@update')->name('proveedor.update')
+        ->middleware('can:proveedor.update');
+        
+    Route::delete('proveedor/{proveedor}', 'ProveedorController@destroy')->name('proveedor.destroy')
+        ->middleware('can:proveedor.destroy');
     
 });

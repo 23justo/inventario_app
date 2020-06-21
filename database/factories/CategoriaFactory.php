@@ -9,6 +9,6 @@ $factory->define(Categoria::class, function (Faker $faker) {
     return [
         'nombre' => $faker->sentence,
         'descripcion' => $faker->sentence,
-        'sucursal_id' =>  rand(1,20)
+        'sucursal_id' =>  rand(1,10)
     ];
 });

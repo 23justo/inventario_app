@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Caffeinated\Shinobi\Models\Role;
 
-class SucursalTableSeeder extends Seeder
+
+class AssginPermissionSeeder.php extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class SucursalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Sucursal::class, 9)->create();
+        
     }
 }
