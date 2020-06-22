@@ -211,5 +211,30 @@ class PermissionsTableSeeder extends Seeder
             'slug'          => 'venta.destroy',
             'description'   => 'Borrar todos los ventas del sistema',
         ]);
+
+         //transferencias
+         Permission::create([
+            'name'          => 'Crear transferencia',
+            'slug'          => 'transferencia.store',
+            'description'   => 'Crear transferencia del sistema',
+        ]);
+
+        Permission::create([
+            'name'          => 'Mostrar transferencia',
+            'slug'          => 'transferencia.index',
+            'description'   => 'Lista  todos los transferencia del sistema',
+        ]);
+
+        Permission::create([
+            'name'          => 'Modificar transferencia',
+            'slug'          => 'transferencia.update',
+            'description'   => 'Modificar todos los transferencia del sistema',
+        ]);
+
+        Permission::create([
+            'name'          => 'Borrar transferencia',
+            'slug'          => 'transferencia.destroy',
+            'description'   => 'Borrar todos los transferencia del sistema',
+        ]);
     }
 }

@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //SUPERMERCADOS
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('supermercados', 'SupermercadoController@store')->name('supermercado.store')
         ->middleware('can:supermercado.create');
@@ -40,7 +40,7 @@ Route::middleware('auth:api')->group( function () {
 });
 
 //SUCURSALES
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('sucursales', 'SucursalController@store')->name('sucursal.store')
         ->middleware('can:sucursal.create');
@@ -62,7 +62,7 @@ Route::middleware('auth:api')->group( function () {
 
 
 //CATEGORIAS
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('categorias', 'CategoriaController@store')->name('categoria.store')
         ->middleware('can:categoria.create');
@@ -82,7 +82,7 @@ Route::middleware('auth:api')->group( function () {
 });
 
 //Productos
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('productos', 'ProductoController@store')->name('producto.store')
         ->middleware('can:producto.store');
@@ -102,7 +102,7 @@ Route::middleware('auth:api')->group( function () {
 });
 
 //COMPRA
-Route::middleware('auth:api')->group( function () {
+Route::middleware([['auth:api','apilogger'],'apilogger'])->group( function () {
     
     Route::post('compras', 'CompraController@store')->name('compra.store')
         ->middleware('can:compra.store');
@@ -123,7 +123,7 @@ Route::middleware('auth:api')->group( function () {
 });
 
 //VENTA
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('ventas', 'VentaController@store')->name('venta.store')
         ->middleware('can:venta.store');
@@ -144,7 +144,7 @@ Route::middleware('auth:api')->group( function () {
 });
 
 //PROVEEDOR
-Route::middleware('auth:api')->group( function () {
+Route::middleware(['auth:api','apilogger'])->group( function () {
     
     Route::post('proveedores', 'ProveedorController@store')->name('proveedor.store')
         ->middleware('can:proveedor.store');
@@ -163,3 +163,30 @@ Route::middleware('auth:api')->group( function () {
         ->middleware('can:proveedor.destroy');
     
 });
+
+//Transferencias
+Route::middleware(['auth:api','apilogger'])->group( function () {
+    
+    Route::post('transferencias', 'TransferenciaController@store')->name('transferencia.store')
+        ->middleware('can:transferencia.store');
+
+    Route::get('transferencias', 'TransferenciaController@index')->name('transferencia.index')
+        ->middleware('can:transferencia.index');
+
+    Route::get('transferencias/{transferencia}', 'TransferenciaController@show')->name('transferencia.show')
+        ->middleware('can:transferencia.show');
+
+    
+    Route::put('transferencias/{transferencia}', 'TransferenciaController@update')->name('transferencia.update')
+        ->middleware('can:transferencia.update');
+        
+    Route::delete('transferencias/{transferencia}', 'TransferenciaController@destroy')->name('transferencia.destroy')
+        ->middleware('can:transferencia.destroy');
+    
+});
+
+Route::middleware('auth:api')->get('reportes/inventario/sucursal/{sucursal}', 'Reporteria@index')->middleware('can:sucursal.index');;
+Route::middleware('auth:api')->get('reportes/inventario/', 'Reporteria@productos_por_sucursal')->middleware('can:sucursal.index');;
+
+
+

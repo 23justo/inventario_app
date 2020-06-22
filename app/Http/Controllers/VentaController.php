@@ -34,7 +34,6 @@ class VentaController extends Controller
     public function filter_venta(){
         $productos = $this->filter();
         $detalle_venta = VentaDetalle::whereIn('producto_id',$productos)->pluck('venta_id')->toArray();
-        error_log(json_encode($detalle_venta));
         return array_unique($detalle_venta);
     }
 
